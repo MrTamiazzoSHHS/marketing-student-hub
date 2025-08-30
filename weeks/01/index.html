@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Week 1 — Marketing & Advertising (Student)</title>
+  <meta name="description" content="Week 1 student hub: careers intro, Adobe Express infographic, promotional mix discussion." />
+  <style>
+    :root{
+      --bg:#0b0c10; --card:#111218; --ink:#e8eaf0; --muted:#b7bdcf;
+      --accent:#5eead4; --accent-2:#a78bfa; --danger:#ff6b6b; --ok:#22c55e;
+      --border:#232533; --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px; --space: clamp(12px, 2.2vw, 22px); --maxw: 1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; background:linear-gradient(180deg, #0a0b10, #0e1016);
+      color:var(--ink); font:16px/1.5 system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif;}
+    a{color:var(--accent); text-decoration:none} a:hover{text-decoration:underline}
+
+    /* Hero */
+    .hero{position:relative; isolation:isolate; min-height:48vh;
+      display:grid; place-items:end start; padding:calc(var(--space)*2); overflow:hidden;}
+    .hero::before{
+      content:""; position:absolute; inset:0; z-index:-2; background:#000 center/cover no-repeat;
+      filter:brightness(.6) saturate(1.2); background-image: var(--hero-url);
+    }
+    .hero::after{content:""; position:absolute; inset:0; z-index:-1;
+      background:linear-gradient(180deg, transparent 0%, rgba(10,12,16,.65) 65%, #0a0b10 100%);}
+    .hero h1{font-size: clamp(28px, 6vw, 52px); margin:0 0 6px 0; letter-spacing:.5px}
+    .hero p{margin:0; color:var(--muted); max-width: 58ch}
+
+    /* Shell */
+    .wrap{max-width:var(--maxw); margin:-60px auto 100px; padding:0 var(--space);}
+
+    /* Top Actions */
+    .actions{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 calc(var(--space)*1.5)}
+    .btn{--b:var(--accent); display:inline-grid; grid-auto-flow:column; gap:10px; align-items:center;
+      padding:12px 16px; border:1px solid var(--b); color:var(--ink); border-radius:12px;
+      background:color-mix(in oklab, var(--b) 12%, transparent); box-shadow:var(--shadow); font-weight:600}
+    .btn .sub{font-weight:500; color:var(--muted); font-size:.9rem}
+    .btn.secondary{--b:var(--accent-2)}
+
+    /* Grid */
+    .grid{display:grid; gap:var(--space)}
+    @media (min-width: 900px){.grid.cols-2{grid-template-columns:2fr 1fr}}
+
+    /* Cards */
+    .card{background:linear-gradient(180deg, color-mix(in oklab, var(--card), #0f111a 60%), var(--card));
+      border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .card h2{margin:0; font-size: clamp(18px, 2.5vw, 24px)}
+    .card .head{padding:20px; border-bottom:1px solid var(--border);
+      display:flex; align-items:center; justify-content:space-between; gap:12px}
+    .card .body{padding:20px}
+
+    /* Day accordion */
+    details.day{border-top:1px dashed var(--border)}
+    details.day summary{cursor:pointer; padding:18px 0; list-style:none; display:flex; align-items:center; gap:12px}
+    details.day[open]{background:linear-gradient(180deg, transparent, rgba(255,255,255,.02))}
+    .day .tag{font:600 12px/1.1 ui-monospace,Menlo,monospace; letter-spacing:.4px; padding:6px 10px;
+      border-radius:999px; background:#171924; color:var(--muted); border:1px solid var(--border)}
+    .steps{display:grid; gap:8px; padding-left:0; margin:10px 0 0}
+    .step{display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:start;
+      padding:10px 12px; border:1px solid var(--border); border-radius:12px; background:#0f1120}
+    .step input{accent-color:var(--accent)} .step strong{font-weight:700}
+
+    /* Assignments */
+    .assignments .item{display:grid; gap:8px; border-top:1px dashed var(--border); padding:14px 0}
+    .assignments .item:first-child{border-top:0; padding-top:0}
+    .meta{display:flex; flex-wrap:wrap; gap:10px; color:var(--muted); font-size:.95rem}
+    .chip{padding:6px 10px; border-radius:999px; border:1px solid var(--border); background:#151724}
+    .due.soon{border-color:var(--danger); color:var(--danger)}
+
+    footer{margin:60px 0; color:var(--muted); font-size:.95rem}
+    .small{font-size:.9rem; color:var(--muted)}
+    code.inline{background:#1a1c28; border:1px solid var(--border); padding:2px 6px; border-radius:6px}
+  </style>
+</head>
+<body>
+  <header class="hero" id="hero">
+    <div>
+      <h1>Week 1 · Careers → Infographic</h1>
+      <p>Routines, career snapshots, a quick Adobe Express workflow, and a polished Career Infographic. You’ll also practice channel choice with the Promotional Mix.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Quick actions -->
+    <div class="actions">
+      <a class="btn" id="btnCanvasModule" target="_blank" rel="noopener">
+        <span>Open Canvas Module</span><span class="sub">Assignments & submissions</span>
+      </a>
+      <a class="btn secondary" id="btnPearDeckJoin" target="_blank" rel="noopener">
+        <span>Join Pear Deck</span><span class="sub">Student join link</span>
+      </a>
+      <a class="btn" id="btnSlides" target="_blank" rel="noopener">
+        <span>Open Slides</span><span class="sub">Week 1 deck</span>
+      </a>
+      <a class="btn" id="btnTimer" title="8-minute demo timer"><span>Start 8:00 Timer</span></a>
+    </div>
+
+    <section class="grid cols-2">
+      <!-- DAY-BY-DAY -->
+      <article class="card">
+        <div class="head"><h2>Day-by-Day Plan</h2><span class="small">Follow the checkboxes as you go.</span></div>
+        <div class="body" id="days">
+
+          <!-- Monday (50) -->
+          <details class="day" open>
+            <summary><span class="tag">Mon</span><strong>Welcome, routines & mini Express demo</strong></summary>
+            <ol class="steps">
+              <li class="step"><input type="checkbox"/> <div><strong>Bellringer (2–3 sentences):</strong> One brand you love and why.</div></li>
+              <li class="step"><input type="checkbox"/> <div><strong>Icebreaker:</strong> On an index card, doodle a quick personal logo (symbol/initials/icon). Share if called.</div></li>
+              <li class="step"><input type="checkbox"/> <div><strong>Open:</strong> Canvas → <em>Week 1 Module</em>. Skim the four assignments.</div></li>
+              <li class="step"><input type="checkbox"/> <div><strong>Watch:</strong> 8-minute demo in Adobe Express (title, three short text blocks, one icon, two fonts, 2–3 colors).</div></li>
+              <li class="step"><input type="checkbox"/> <div><strong>Exit ticket:</strong> One thing you’re excited about + one question (Canvas text entry or sticky note).</div></li>
+            </ol>
+          </details>
+
+          <!-- Tuesday (50) -->
+          <details class="day">
+            <summary><span class="tag">Tue</span><strong>Careers & Draft Infographic</strong></summary>
+            <ol class="steps">
+              <li class="step"><input type="checkbox"/> <div><strong>Bellringer:</strong> Which job sounds cooler (event planner, social media manager, or sports marketer)? Why?</div></li>
+              <li class="step"><input type="checkbox"/> <div><strong>Mini-lesson:</strong> Career snapshots (tasks, tools, skills, growth).</div></li>
+              <li class="step"><input type="checkbox"/> <div><strong>Create draft in Express:</strong>
+                Title (career) · 3 Daily Tasks · 3 Tools · 2 Skills · 1 Growth Path · 1 icon · footer “Created by [Name] — Marketing”.
+                Export PNG.
+              </div></li>
+              <li class="step"><input type="checkbox"/> <div><strong>Submit Draft PNG:</strong> Upload to Canvas → <em>Career Infographic — Draft</em>.</div></li>
+            </ol>
+          </details>
+
+          <!-- Wednesday (90) -->
+          <details class="day">
+            <summary><span class="tag">Wed</span><strong>Workshop, Peer Review, Final Infographic</strong></summary>
+            <ol class="steps">
+              <li class="step"><input type="checkbox"/> <div><strong>Bellringer:</strong> What visual thing (color/font/style) makes an ad memorable?</div></li>
+              <li class="step"><input type="checkbox"/> <div><strong>Tune-up checklist:</strong> Palette (2–3), clear type pairing, margins/alignment, hierarchy (most important info pops first).</div></li>
+              <li class="step"><input type="checkbox"/> <div><strong>Refine & export:</strong> Lock colors/type; export near-final PNG by ~70 min.</div></li>
+              <li class="step"><input type="checkbox"/> <div><strong>Peer Review ×2:</strong> Each partner leaves 1 strength + 1 suggestion using stems.</div></li>
+              <li class="step"><input type="checkbox"/> <div><strong>Submit Final:</strong> Upload PNG + 2–3 sentence caption to <em>Career Infographic — Final</em>.</div></li>
+            </ol>
+          </details>
+
+          <!-- Friday (50) -->
+          <details class="day">
+            <summary><span class="tag">Fri</span><strong>Promotional Mix & Discussion Post</strong></summary>
+            <ol class="steps">
+              <li class="step"><input type="checkbox"/> <div><strong>Bellringer:</strong> A product you use daily — best way a company could reach you?</div></li>
+              <li class="step"><input type="checkbox"/> <div><strong>Mini-lesson:</strong> Advertising · PR · Sales Promo · Personal Selling · Digital/Social.</div></li>
+              <li class="step"><input type="checkbox"/> <div><strong>Group task:</strong> For 3 products, pick 2 effective channels + 1 weak channel. Give two reasons tied to audience/message/cost.</div></li>
+              <li class="step"><input type="checkbox"/> <div><strong>Discussion Post:</strong> 3–4 sentences — 2 best channels + why; 1 weak channel + why. Reply to a peer by Sun 8pm.</div></li>
+              <li class="step"><input type="checkbox"/> <div><strong>Turn in bellringers:</strong> Submit <em>Bellringer Journal — Week 1</em> in Canvas.</div></li>
+            </ol>
+          </details>
+        </div>
+      </article>
+
+      <!-- ASSIGNMENTS -->
+      <aside class="card">
+        <div class="head"><h2>Assignments this week</h2><span class="small">Links open in Canvas</span></div>
+        <div class="body assignments">
+          <div class="item">
+            <strong>Bellringer Journal — Week 1</strong>
+            <div class="meta">
+              <span class="chip">Due Fri · end of class</span>
+              <span class="chip">~8 pts</span>
+            </div>
+            <div><a id="lnkBellringer" target="_blank" rel="noopener">Open in Canvas</a></div>
+          </div>
+          <div class="item">
+            <strong>Career Infographic — Draft (PNG)</strong>
+            <div class="meta">
+              <span class="chip">Due Tue · end of class</span>
+              <span class="chip due soon">Checkpoint</span>
+            </div>
+            <div><a id="lnkDraft" target="_blank" rel="noopener">Open in Canvas</a></div>
+          </div>
+          <div class="item">
+            <strong>Career Infographic — Final (PNG + caption)</strong>
+            <div class="meta">
+              <span class="chip">Due Wed · end</span>
+              <span class="chip">1–5 rubric</span>
+            </div>
+            <div><a id="lnkFinal" target="_blank" rel="noopener">Open in Canvas</a></div>
+          </div>
+          <div class="item">
+            <strong>Promotional Mix — Discussion</strong>
+            <div class="meta">
+              <span class="chip">Post by Fri · Reply by Sun 8pm</span>
+              <span class="chip">8 pts total</span>
+            </div>
+            <div><a id="lnkDiscussion" target="_blank" rel="noopener">Open in Canvas</a></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Teacher utilities -->
+    <section class="card" style="margin-top:var(--space);">
+      <div class="head"><h2>Quick Utilities</h2><span class="small">Teacher helpers</span></div>
+      <div class="body">
+        <p>
+          <button class="btn" id="btnCopyBellringer">Copy Bellringer prompt (today)</button>
+          <button class="btn secondary" id="btnCopyStems">Copy Peer Review stems</button>
+        </p>
+        <p class="small">If a link opens the wrong Canvas course, update the IDs in the <code class="inline">CONFIG</code> block below.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p class="small">v<span id="ver"></span> · Hero image expected at <code class="inline">/assets/001_marketing_hero.jpg</code>. To refresh student browsers, bump the version below.</p>
+    </footer>
+  </main>
+
+  <!-- ========================= CONFIG (EDIT ME) ========================= -->
+  <script>
+    const CONFIG = {
+      siteVersion: "2025.08.29.1",
+      heroPath: "/assets/001_marketing_hero.jpg",
+      canvasBase: "https://YOUR-SCHOOL.instructure.com", // e.g., https://sthelens.instructure.com
+      courseId: 123456, // Canvas course ID
+      moduleUrl: "https://YOUR-SCHOOL.instructure.com/courses/123456/modules/999999", // optional Module link
+      assignments: {
+        bellringerWeek1: 111111,      // /assignments/{id}
+        infographicDraft: 222222,
+        infographicFinal: 333333,
+        promoMixDiscussion: 444444
+      },
+      peardeck: {
+        joinUrl: "https://app.peardeck.com/join/ABCDE",           // student join link
+        teacherDashboardUrl: "https://app.peardeck.com/session/XYZ" // optional
+      },
+      slides: {
+        week1Url: "https://docs.google.com/presentation/d/GOOGLE-SLIDES-ID/edit"
+      },
+      bellringerPrompts: {
+        Mon: "What’s one brand you love and why?",
+        Tue: "Which job sounds cooler: event planner, social media manager, or sports marketer? Why?",
+        Wed: "What’s one visual thing (color, font, style) that makes an ad memorable?",
+        Fri: "Product you use daily — best way a company could get your attention?"
+      },
+      peerStems: "I like how you… because…\nOne way to make this stronger is…"
+    };
+  </script>
+
+  <!-- ========================= LOGIC ========================= -->
+  <script>
+    (function(){
+      const v = CONFIG.siteVersion;
+      const withV = (url) => url + (url.includes('?') ? `&v=${v}` : `?v=${v}`);
+
+      // Hero image
+      const hero = document.getElementById('hero');
+      hero && hero.style.setProperty('--hero-url', `url('${withV(CONFIG.heroPath)}')`);
+
+      // Version tag
+      document.getElementById('ver').textContent = v;
+
+      // Wire buttons
+      const course = CONFIG.courseId;
+      const base = CONFIG.canvasBase.replace(/\/$/, '');
+      const asn = (id)=> `${base}/courses/${course}/assignments/${id}`;
+      const byId = (id)=>document.getElementById(id);
+
+      if(CONFIG.moduleUrl){ byId('btnCanvasModule').href = withV(CONFIG.moduleUrl); }
+      else { byId('btnCanvasModule').href = `${base}/courses/${course}`; }
+      byId('btnPearDeckJoin').href = CONFIG.peardeck.joinUrl;
+      byId('btnSlides').href = CONFIG.slides.week1Url;
+
+      byId('lnkBellringer').href = asn(CONFIG.assignments.bellringerWeek1);
+      byId('lnkDraft').href = asn(CONFIG.assignments.infographicDraft);
+      byId('lnkFinal').href = asn(CONFIG.assignments.infographicFinal);
+      byId('lnkDiscussion').href = asn(CONFIG.assignments.promoMixDiscussion);
+
+      // 8-minute demo timer
+      let timerActive = false; let tLeft = 8*60; let tInt;
+      const btnTimer = byId('btnTimer');
+      const fmt = (s)=>{ const m=String(Math.floor(s/60)).padStart(1,'0'); const sec=String(s%60).padStart(2,'0'); return `${m}:${sec}`; };
+      const tick = ()=>{
+        if(tLeft<=0){ clearInterval(tInt); timerActive=false; btnTimer.style.setProperty('--b', 'var(--ok)'); btnTimer.innerHTML = '<span>Done!</span>';
+          try{ new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABYAAAAA').play(); }catch(e){}
+          return;
+        }
+        tLeft--; btnTimer.querySelector('span').textContent = fmt(tLeft);
+      };
+      btnTimer.addEventListener('click', ()=>{
+        if(timerActive){ clearInterval(tInt); timerActive=false; btnTimer.inne
